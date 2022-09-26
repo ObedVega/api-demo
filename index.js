@@ -83,10 +83,3 @@ app.get('/api/books/:id', async (req, res) => {
 app.listen(PORT, function () {
     console.log(`Demo project at: ${PORT}!`); 
 });
-
-
-
-const codigo = '2'
-const nivel = '100.2' 
-
-http://localhost:5050/eventos/{$var}
