@@ -1,0 +1,21 @@
+{
+  "name": "api-demo",
+  "version": "1.0.0",
+  "description": "rest API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "api-demo"
+  },
+  "author": "Obed Vega",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "firebase": "^9.10.0",
+    "firebase-admin": "^11.0.1"
+  }
+}
