@@ -10,7 +10,11 @@ app.get('/api/', async (req, res) => {
 
 //app.get('/api/books', books.read);
 //app.post('/api/books/:titulo', books);
-
+/*
+ 0 = martillo
+ 1 = humo
+ 2 = temperatura
+*/ 
 app.post('/eventos/:tipo', async (req, res) => {
     const fecha = new Date();
     fecha.getFullYear();
@@ -25,6 +29,12 @@ app.post('/eventos/:tipo', async (req, res) => {
             case '1':
                 mensaje = "humo";
                 break;
+            case '2':
+                mensaje = "temperatura";
+                    break;
+            case '3':
+                mensaje = "voltaje";
+                break;        
             default:
               console.log("Error");
           }    
@@ -33,6 +43,8 @@ app.post('/eventos/:tipo', async (req, res) => {
         tipo: mensaje,
         fecha: fecha
       };
+
+      console.log(userJson);
 
       const usersDb = db.collection('eventos'); 
       const response = await usersDb.add(userJson);
@@ -71,3 +83,10 @@ app.get('/api/books/:id', async (req, res) => {
 app.listen(PORT, function () {
     console.log(`Demo project at: ${PORT}!`); 
 });
+
+
+
+const codigo = '2'
+const nivel = '100.2' 
+
+http://localhost:5050/eventos/{$var}
