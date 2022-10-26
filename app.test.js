@@ -1,7 +1,7 @@
 const request = require("supertest")
 //const baseURL = "http://localhost:5050"
 const baseURL = "https://app-demo-firebase.herokuapp.com/"
-const idx = require('./index');
+const idx = require('./app');
 
 test('This is my demo project', async () => {
     const response = await request(baseURL).get("/api");
