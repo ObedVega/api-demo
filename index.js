@@ -1,12 +1,37 @@
 var express = require('express');
 var app = express();
+
 const PORT = process.env.PORT || 5050
+
+/** Run Server */
+app.listen(PORT, function () {
+    console.log(`Demo project at: ${PORT}!`); 
+});
+
 //const {books} = require('./handlers/books');
 const { db } = require('./util/admin');
 
+/** Body parser*/
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+/** Body parser*/
+
 app.get('/api/', async (req, res) => {
     res.send('This is my demo project')
-})
+});
+
+app.post('/api/graba_alerta/', async (req, res) => {
+
+  const tipo_alerta = req.body.tipoAlerta; 
+  const mde_id = req.body.mdeid;
+  
+  console.log(tipo_alerta);
+  console.log(mde_id);
+  res.send('Valores registrados con exito!');
+});
 
 //app.get('/api/books', books.read);
 //app.post('/api/books/:titulo', books);
@@ -80,6 +105,5 @@ app.get('/api/books/:id', async (req, res) => {
     }
   });
 */
-app.listen(PORT, function () {
-    console.log(`Demo project at: ${PORT}!`); 
-});
+
+module.exports = app;
