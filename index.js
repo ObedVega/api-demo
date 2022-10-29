@@ -64,9 +64,16 @@ app.post('/eventos/:tipo', async (req, res) => {
               console.log("Error");
           }    
 
+      const fechaActual = new Date();
+      fechaActual.getFullYear();
       const userJson = {
-        tipo: mensaje,
-        fecha: fecha
+      //  tipo: mensaje,
+      //  fecha: fecha
+        activo: true,
+        corte: "Prueba funcion",
+        enterados: [],
+        fecha: fechaActual,
+        torre: "111"
       };
 
       console.log(userJson);
