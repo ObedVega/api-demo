@@ -28,8 +28,22 @@ app.post('/api/graba_alerta/', async (req, res) => {
   const tipo_alerta = req.body.tipoAlerta; 
   const mde_id = req.body.mdeid;
   
-  console.log(tipo_alerta);
-  console.log(mde_id);
+  const fechaActual = new Date();
+  fechaActual.getFullYear();
+  
+  const userJson = {
+    activo: true,
+    corte: "Prueba Test-01",
+    enterados: [],
+    fecha: fechaActual,
+    torre: "111"
+  };
+
+  console.log(userJson);
+
+  const usersDb = db.collection('Eventos'); 
+  const response = await usersDb.add(userJson);
+  console.log(response);
   res.send('Valores registrados con exito!');
 });
 
@@ -64,15 +78,23 @@ app.post('/eventos/:tipo', async (req, res) => {
               console.log("Error");
           }    
 
+      const fechaActual = new Date();
+      fechaActual.getFullYear();
       const userJson = {
-        tipo: mensaje,
-        fecha: fecha
+      //  tipo: mensaje,
+      //  fecha: fecha
+        activo: true,
+        corte: "Prueba funcion",
+        enterados: [],
+        fecha: fechaActual,
+        torre: "111"
       };
 
       console.log(userJson);
 
       const usersDb = db.collection('eventos'); 
       const response = await usersDb.add(userJson);
+
       res.send(response);
     } catch(error) {
       res.send(error);
